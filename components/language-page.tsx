@@ -1,0 +1,4 @@
+'use client';
+import { CheckCircle2,Languages } from 'lucide-react';
+import { useLanguage } from '@/components/language-provider';
+export function LanguagePage(){const{locale,setLocale,t}=useLanguage();return <div className="form-card" style={{maxWidth:680,margin:'0 auto'}}><div className="center"><Languages size={44} color="var(--red)" style={{margin:'0 auto 12px'}}/><h1 className="section-title">{t('preferredLanguage')}</h1><p className="muted">Choose a language. The change applies immediately to menus, buttons and pages.</p></div><div className="form-grid" style={{marginTop:26}}>{(['bn','en'] as const).map(value=><button type="button" key={value} className={locale===value?'primary-btn':'secondary-btn'} style={{justifyContent:'space-between'}} onClick={()=>setLocale(value)}><span>{value==='bn'?t('bangla'):t('english')}</span>{locale===value?<CheckCircle2 size={20}/>:null}</button>)}</div></div>;}
